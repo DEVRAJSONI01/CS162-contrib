@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheaté - Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background: #fff0d1;
+        }
+
+        header {
+            background: #000000;
+            color: #fff;
+            height: 60px;
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .brand-name {
+            color: #FFF0D1;
+            font-family: "Mifelin", serif;
+            letter-spacing: 2.5px;
+            font-size: 28px;
+        }
+
+        .profile-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-info {
+            background: #f9f0dc;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            width: 150px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info-value {
+            color: #666;
+        }
+
+        .orders-section {
+            background: #f9f0dc;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .order-item {
+            border-bottom: 1px solid #ddd;
+            padding: 20px 0;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-date {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .order-details {
+            color: #666;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .no-orders {
+            text-align: center;
+            color: #666;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="brand-div">
+                <h1 class="brand-name"><img src="logo1.svg" alt="logo" width="35px" height="25px"> Wheaté</h1>
+            </div>
+        </nav>
+    </header>
+
+    <a href="/pizza" class="back-button">← Back to Menu</a>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>Your Profile</h1>
+        </div>
+
+        <div class="profile-info">
+            <div class="info-row">
+                <div class="info-label">First Name:</div>
+                <div class="info-value" id="firstName">Loading...</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Last Name:</div>
+                <div class="info-value" id="lastName">Loading...</div>
+            </div>
+        </div>
+
+        <div class="orders-section">
+            <h2>Your Orders</h2>
+            <div id="ordersList">
+                <div class="no-orders">No orders placed yet</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async function() {
+            try {
+                // Fetch user data from MongoDB
+                const response = await fetch('/profile', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const userData = await response.json();
+
+                if (response.ok) {
+                    // Update profile information with actual user data
+                    document.getElementById('firstName').textContent = userData.firstName;
+                    document.getElementById('lastName').textContent = userData.lastName;
+                } else {
+                    console.error('Failed to fetch user data:', userData.message);
+                }
+
+                // Load orders from MongoDB
+                const ordersResponse = await fetch('/api/orders');
+                const ordersData = await ordersResponse.json();
+
+                // Update orders list
+                const ordersList = document.getElementById('ordersList');
+                if (!ordersData || ordersData.length === 0) {
+                    ordersList.innerHTML = '<div class="no-orders">No orders placed yet</div>';
+                } else {
+                    ordersList.innerHTML = '';
+                    ordersData.forEach(order => {
+                        const orderItem = document.createElement('div');
+                        orderItem.className = 'order-item';
+                        orderItem.innerHTML = `
+                            <div class="order-date">Order Date: ${new Date(order.date).toLocaleString()}</div>
+                            <div class="order-details">
+                                <p>Items: ${order.items.map(item => `${item.name} (${item.quantity})`).join(', ')}</p>
+                                <p>Total: ₹${order.total}</p>
+                            </div>
+                        `;
+                        ordersList.appendChild(orderItem);
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                document.getElementById('firstName').textContent = 'Error loading profile';
+                document.getElementById('lastName').textContent = 'Please try again later';
+            }
+        });
+    </script>
+</body>
+
+</html> 

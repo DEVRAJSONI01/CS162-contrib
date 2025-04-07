@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+    <link rel="stylesheet" href="index.html">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+
+        }
+
+        header {
+            background: #000000;
+            color: #fff;
+            /* padding: 1rem; */
+            height: 60px;
+            width: 100%;
+
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav li {
+            margin-left: 1rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: auto;
+
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 0;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-size: 24px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('Wallpaper1.png') no-repeat center center/cover;
+            opacity: 1;
+            z-index: -1;
+        }
+
+        #priceFilter {
+            padding: 10px 14px;
+            font-size: 16px;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            background-color: #fff;
+            color: #333;
+            font-family: inherit;
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='18' viewBox='0 0 24 24' width='18' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+            cursor: pointer;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            margin-right: 10px;
+        }
+
+        #priceFilter:focus {
+            outline: none;
+            border-color: #2e8b57;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .section {
+            padding: 2rem;
+            background-color: #FFF0D1;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: #f9f0dc;
+            margin: 30px 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item span {
+            display: block;
+            margin: 0.5rem 0;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .cart-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .cart-btn {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-controls.hidden {
+            display: none;
+        }
+
+        .quantity-controls button {
+            padding: 6px 10px;
+            background-color: #361F13;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .quantity {
+            font-weight: bold;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .contact-section {
+            background-color: #fdf0d0;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #2e2b28;
+            margin-bottom: 50px;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fbe7b8;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-item {
+            text-align: left;
+        }
+
+        .contact-item h3 {
+            font-size: 1.4rem;
+            color: #2e2b28;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .contact-item h3::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 4px;
+            background-color: #d49b27;
+            left: 0;
+            top: 0;
+            border-radius: 2px;
+        }
+
+        .contact-item a {
+            display: block;
+            margin-bottom: 10px;
+            color: #0066aa;
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #003d66;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+            }
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Wheate</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Welcome to Our Restaurant</h1>
+        <p>Noodles</p>
+        <div style="text-align:center; margin-bottom: 2rem;">
+            <span class="filter">
+                <select id="priceFilter">
+                    <option value="all">All</option>
+                    <option value="below300">Below ₹300</option>
+                    <option value="300to500">₹300–₹500</option>
+                    <option value="above500">Above ₹500</option>
+                </select>
+            </span>
+
+            <input type="text" id="searchInput" placeholder="Search for a dish..." oninput="searchMenu()"
+                style="padding: 0.8rem; font-size: 1.1rem; width: 300px; border-radius: 8px; border: 1px solid #ccc;">
+            <button onclick="searchMenu()"
+                style="padding: 0.8rem 1.5rem; font-size: 1.1rem; background: #4CAF50; color: white; border: none; border-radius: 8px; margin-left: 10px;">
+                Search
+            </button>
+
+        </div>
+        <a href="#menu" class="btn">View Menu</a>
+    </section>
+    <section id="menu" class="section">
+        <h2>Menu</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="noodle1.png" alt="Hakka Noodles">
+                <h3>Hakka Noodles</h3>
+                <p>Stir-fried noodles with vegetables and soy sauce.</p>
+                <span>₹180<span>
+                        <div class="cart-controls">
+                            <button class="cart-btn" onclick="addToCart(this)">🛒 Cart</button>
+                            <div class="quantity-controls hidden">
+                                <button class="decrease" onclick="changeQuantity(this, -1)">-</button>
+                                <span class="quantity">1</span>
+                                <button class="increase" onclick="changeQuantity(this, 1)">+</button>
+                            </div>
+                        </div>
+
+            </div>
+            <div class="menu-item">
+                <img src="noodle2.png" alt="Schezwan Noodles">
+                <h3>Schezwan Noodles</h3>
+                <p>Spicy Chinese noodles with vegetables and schezwan sauce.</p>
+                <span>₹160</span>
+                <div class="cart-controls">
+                    <button class="cart-btn" onclick="addToCart(this)">🛒 Cart</button>
+                    <div class="quantity-controls hidden">
+                        <button class="decrease" onclick="changeQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button class="increase" onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="noodle3.png" alt="Ramen">
+                <h3>Ramen</h3>
+                <p>Japanese noodle soup with rich broth, vegetables, and toppings.</p>
+                <span>₹140</span>
+                <div class="cart-controls">
+                    <button class="cart-btn" onclick="addToCart(this)">🛒 Cart</button>
+                    <div class="quantity-controls hidden">
+                        <button class="decrease" onclick="changeQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button class="increase" onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="noodle4.png" alt="Pad Thai">
+                <h3>Pad Thai</h3>
+                <p>Thai rice noodles with tamarind sauce, peanuts, and vegetables.</p>
+                <span>₹200</span>
+                <div class="cart-controls">
+                    <button class="cart-btn" onclick="addToCart(this)">🛒 Cart</button>
+                    <div class="quantity-controls hidden">
+                        <button class="decrease" onclick="changeQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button class="increase" onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="noodle5.png" alt="Chow Mein">
+                <h3>Chow Mein</h3>
+                <p>Stir-fried noodles with vegetables and protein of your choice.</p>
+                <span>₹150</span>
+                <div class="cart-controls">
+                    <button class="cart-btn" onclick="addToCart(this)">🛒 Cart</button>
+                    <div class="quantity-controls hidden">
+                        <button class="decrease" onclick="changeQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button class="increase" onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="noodle6.png" alt="Udon Noodles">
+                <h3>Udon Noodles</h3>
+                <p>Thick Japanese wheat noodles in savory broth with toppings.</p>
+                <span>₹170</span>
+                <div class="cart-controls">
+                    <button class="cart-btn" onclick="addToCart(this)">🛒 Cart</button>
+                    <div class="quantity-controls hidden">
+                        <button class="decrease" onclick="changeQuantity(this, -1)">-</button>
+                        <span class="quantity">1</span>
+                        <button class="increase" onclick="changeQuantity(this, 1)">+</button>
+                    </div>
+                </div>
+            </div>
+            
+            
+    </section>
+
+    <section class="contact-section">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-item">
+                <h3>Email</h3>
+                <a href="mailto:ambujadityasingh@gmail.com">ambujadityasingh@gmail.com</a>
+                <a href="mailto:devrajsoni@gmail.com">devrajsoni@gmail.com</a>
+                <a href="mailto:avnisinghal@gmail.com">avnisinghal@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <h3>Phone</h3>
+                <a href="tel:9336975269">9336975269</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <footer>
+        <p>©️ 2023 Wheate. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function searchMenu() {
+            const input = document.getElementById('searchInput').value.toLowerCase().trim();
+            const items = document.querySelectorAll('.menu-item');
+
+            let found = false;
+
+            items.forEach(item => {
+                const title = item.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(input)) {
+                    item.style.display = 'block';
+                    found = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // If empty, show all items
+            if (input === '') {
+                items.forEach(item => item.style.display = 'block');
+                return;
+            }
+
+            if (!found) {
+                alert("Sorry, no matching dish found!");
+            }
+        }
+        function addToCart(btn) {
+            const cartControls = btn.nextElementSibling;
+            btn.style.display = "none";
+            cartControls.classList.remove("hidden");
+        }
+
+        function changeQuantity(button, change) {
+            const quantitySpan = button.parentElement.querySelector(".quantity");
+            let quantity = parseInt(quantitySpan.textContent);
+            quantity = Math.max(1, quantity + change); // Prevent quantity < 1
+            quantitySpan.textContent = quantity;
+        }
+
+        // List of all pizzas
+        document.addEventListener("DOMContentLoaded", () => {
+            const filterSelect = document.getElementById("priceFilter");
+            const menuItems = document.querySelectorAll(".menu-item");
+
+            filterSelect.addEventListener("change", () => {
+                const selected = filterSelect.value;
+
+                menuItems.forEach(item => {
+                    const priceText = item.querySelector("span").textContent.replace(/[^\d]/g, "");
+                    const price = parseInt(priceText, 10);
+
+                    let show = true;
+
+                    if (selected === "below300" && price >= 300) show = false;
+                    else if (selected === "300to500" && (price < 300 || price > 500)) show = false;
+                    else if (selected === "above500" && price <= 500) show = false;
+
+                    item.style.display = show ? "block" : "none";
+                });
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

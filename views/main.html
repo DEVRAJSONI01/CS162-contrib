@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+
+        }
+
+        header {
+            background: #000000;
+            color: #fff;
+            /* padding: 1rem; */
+            height: 60px;
+            width: 100%;
+
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav li {
+            margin-left: 1rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .hero {
+            position: relative;
+            width: 100%;
+            height: auto;
+
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 0;
+            margin-bottom: 20px;
+            color: #ffffff;
+            /* Ensures text remains readable */
+            font-size: 24px;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('bghome.svg') no-repeat center center/cover;
+            opacity: 1;
+            /* Adjust opacity (0 = fully transparent, 1 = fully visible) */
+            z-index: -1;
+            /* Ensures it stays behind the text */
+
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .section {
+            padding: 2rem;
+            background-color: #FFF0D1;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: #f9f0dc;
+            margin: 30px 10px;
+            /* padding: 1rem; */
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            /* border-radius: 5px; */
+        }
+
+        .menu-item span {
+            display: block;
+            margin: 0.5rem 0;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .order-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #4CAF50;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: start;
+            gap: 0.3rem;
+            margin-top: 8px;
+        }
+
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+
+        .star-rating label {
+            font-size: 2rem;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover~label {
+            color: #f5b301;
+            transform: scale(1.1);
+        }
+
+        .star-rating input:checked~label {
+            color: #f5b301;
+        }
+
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .review {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #FFD700;
+            /* Gold color for stars */
+        }
+
+        .contact-section {
+            background-color: #fdf0d0;
+            /* warm beige */
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #2e2b28;
+            /* deep charcoal */
+            margin-bottom: 50px;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fbe7b8;
+            /* soft wheat tone */
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-item {
+            text-align: left;
+        }
+
+        .contact-item h3 {
+            font-size: 1.4rem;
+            color: #2e2b28;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .contact-item h3::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 4px;
+            background-color: #d49b27;
+            /* golden yellow */
+            left: 0;
+            top: 0;
+            border-radius: 2px;
+        }
+
+        .contact-item a {
+            display: block;
+            margin-bottom: 10px;
+            color: #0066aa;
+            /* soft blue */
+            text-decoration: none;
+            font-size: 1.05rem;
+            transition: 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #003d66;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+            }
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">Wheate</div>
+            <ul>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Welcome to Our Restaurant</h1>
+        <p>Enjoy our delicious meals!</p>
+        <div style="text-align:center; margin-bottom: 2rem;">
+            <input type="text" id="searchInput" placeholder="Search for a dish..." oninput="searchMenu()"
+                style="padding: 0.8rem; font-size: 1.1rem; width: 300px; border-radius: 8px; border: 1px solid #ccc;">
+            <button onclick="searchMenu()"
+                style="padding: 0.8rem 1.5rem; font-size: 1.1rem; background: #4CAF50; color: white; border: none; border-radius: 8px; margin-left: 10px;">
+                Search
+            </button>
+        </div>
+        <a href="#menu" class="btn">View Menu</a>
+    </section>
+
+    <section id="menu" class="section">
+        <h2>Menu</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="pizzahome.svg" alt="Whole Wheat Pizza">
+                <h3>Pizza</h3>
+                <a href="pizza.html" class="order-btn">View Items</a>
+            </div>
+            <div class="menu-item">
+                <img src="Burger.png" alt="Multigrain Burger Buns">
+                <h3>Burger</h3>
+                <a href="burger.html" class="order-btn">View Items</a>
+            </div>
+            <div class="menu-item">
+                <img src="Paratha.png" alt="Stuffed Paratha">
+                <h3>Paratha</h3>
+                <a href="paratha.html" class="order-btn">View Items</a>
+            </div>
+            <div class="menu-item">
+                <img src="naan.png" alt="Garlic Naan ">
+                <h3>Naan</h3>
+                <a href="naan.html" class="order-btn">View Items</a>
+            </div>
+            <div class="menu-item">
+                <img src="pasta.png" alt="Whole Wheat Pasta ">
+                <h3>Pasta</h3>
+                <a href="pasta.html" class="order-btn">View Items</a>
+            </div>
+            <div class="menu-item">
+                <img src="Churros.png" alt="Churros">
+                <h3>Noodles</h3>
+                <a href="noodles.html" class="order-btn">View Items</a>
+            </div>
+            <div class="menu-item">
+                <img src="samosa.png" alt="Samosa">
+                <h3>Indian Snacks</h3>
+                <a href="snacks.html" class="order-btn">View Items</a>
+            </div>
+            <div class="menu-item">
+                <img src="bread.png" alt="Pita Bread & Hummus">
+                <h3>Momos</h3>
+                <a href="momos.html" class="order-btn">View Items</a>
+            </div>
+            <div class="menu-item">
+                <img src="rolls.png" alt="Wheat Wraps/Rolls">
+                <h3>Wraps/Rolls</h3>
+                <a href="wraps.html" class="order-btn">View Items</a>
+            </div>
+            <div class="menu-item">
+                <img src="Baklava.png" alt="Baklava">
+                <h3>Desert</h3>
+                <a href="desert.html" class="order-btn">View Items</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="order" class="section">
+        <h2>Give your Review</h2>
+        <form id="reviewForm" method="post" action="#">
+            <label for="item">Your Name</label>
+            <input type="text" id="item" name="name" placeholder="Enter your name" required>
+
+            <label for="quantity">Comment</label>
+            <input type="text" id="quantity" name="comment" placeholder="Comment" required>
+
+            <label for="rating">Rating</label>
+            <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5">★</label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+            </div>
+
+            <button type="submit">Submit your review</button>
+        </form>
+    </section>
+
+    <section id="reviews" class="section">
+        <h2>Customer Reviews</h2>
+        <div id="reviewsContainer"></div>
+        <button id="loadMoreBtn" style="display: none;">+ More</button>
+    </section>
+
+    <section class="contact-section">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-item">
+                <h3>Email</h3>
+                <a href="mailto:ambujadityasingh@gmail.com">ambujadityasingh@gmail.com</a>
+                <a href="mailto:devrajsoni370@gmail.com">devrajsoni370@gmail.com</a>
+                <a href="mailto:avnisinghal@gmail.com">avnisinghal@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <h3>Phone</h3>
+                <a href="tel:9336975269">9336975269</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <footer>
+        <p>© 2023 Wheate. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function searchMenu() {
+            const input = document.getElementById('searchInput').value.toLowerCase().trim();
+            const items = document.querySelectorAll('.menu-item');
+
+            let found = false;
+
+            items.forEach(item => {
+                const title = item.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(input)) {
+                    item.style.display = 'block';
+                    found = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            // If empty, show all items
+            if (input === '') {
+                items.forEach(item => item.style.display = 'block');
+                return;
+            }
+
+            if (!found) {
+                alert("Sorry, no matching dish found!");
+            }
+        }
+
+
+        const defaultReviews = [
+            { name: "Virat Kohli", rating: 4, comment: "The food was amazing! Will order again." },
+            { name: "Katrina Kaif", rating: 5, comment: "Great taste, fast delivery!" },
+            { name: "Ranbir Kapoor", rating: 3, comment: "Decent food, but could improve packaging." }
+        ];
+
+        const reviewForm = document.getElementById("reviewForm") || document.querySelector("form");
+        const reviewsSection = document.querySelector("#reviews");
+        const reviewsContainer = document.createElement("div");
+        reviewsContainer.id = "reviewsContainer";
+        reviewsSection.appendChild(reviewsContainer);
+
+        const loadMoreBtn = document.createElement("button");
+        loadMoreBtn.id = "loadMoreBtn";
+        loadMoreBtn.textContent = "+ More";
+        loadMoreBtn.style.marginTop = "10px";
+        loadMoreBtn.style.padding = "8px 16px";
+        loadMoreBtn.style.backgroundColor = "#333";
+        loadMoreBtn.style.color = "#fff";
+        loadMoreBtn.style.border = "none";
+        loadMoreBtn.style.borderRadius = "6px";
+        loadMoreBtn.style.cursor = "pointer";
+        loadMoreBtn.style.display = "none";
+        reviewsSection.appendChild(loadMoreBtn);
+
+        let reviews = [];
+        let visibleCount = 0;
+        const batchSize = 3;
+
+        // Load reviews from localStorage or use default
+        function loadReviews() {
+            const stored = localStorage.getItem("reviews");
+            if (stored) {
+                reviews = JSON.parse(stored);
+            } else {
+                reviews = defaultReviews;
+                localStorage.setItem("reviews", JSON.stringify(reviews));
+            }
+        }
+
+        // Save reviews to localStorage
+        function saveReviews() {
+            localStorage.setItem("reviews", JSON.stringify(reviews));
+        }
+
+        // Render reviews
+        function renderReviews() {
+            reviewsContainer.innerHTML = "";
+            const toShow = reviews.slice(0, visibleCount + batchSize);
+            toShow.forEach(review => {
+                const div = document.createElement("div");
+                div.classList.add("review");
+                div.innerHTML = `
+        <h3>${review.name}</h3>
+        <p>Rating: <span class="stars">${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)}</span></p>
+        <p>Comment: ${review.comment}</p>
+      `;
+                reviewsContainer.appendChild(div);
+            });
+
+            visibleCount = toShow.length;
+            loadMoreBtn.style.display = visibleCount < reviews.length ? "block" : "none";
+        }
+
+        // Submit review
+        reviewForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const name = document.getElementById("item").value.trim();
+            const comment = document.getElementById("quantity").value.trim();
+            const ratingInput = document.querySelector('input[name="rating"]:checked');
+
+            if (!name || !comment || !ratingInput) {
+                alert("Please complete all fields and select a rating.");
+                return;
+            }
+
+            const rating = parseInt(ratingInput.value);
+            const newReview = { name, rating, comment };
+
+            reviews.unshift(newReview);
+            saveReviews();
+            reviewForm.reset();
+            visibleCount = 0;
+            renderReviews();
+        });
+
+        // Load more reviews
+        loadMoreBtn.addEventListener("click", renderReviews);
+
+        // Initialize
+        loadReviews();
+        renderReviews();
+
+
+
+    </script>
+
+
+</body>
+
+</html>

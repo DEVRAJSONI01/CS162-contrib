@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheaté - Signup</title>
+    <link rel="stylesheet" href="style_signup.css">
+    <script src="/index.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="signup-card">
+            <div class="left-section">
+                <h1 class="title">Create Account</h1>
+                <form action="/signup" method="POST">
+                    <div class="name-fields">
+                        <div class="firstname">
+                            <label for="firstname">FirstName</label>
+                            <input id="firstname" name="firstname" type="text" placeholder="Enter your first name" required>
+                        </div>
+                        
+                        <div class="lastname">
+                            <label for="lastname">LastName</label>
+                            <input id="lastname" name="lastname" type="text" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="Enter your email address" required>
+                    
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" placeholder="Create your password" required>
+                    
+                    <button type="submit">Create account</button>
+                    
+                    <div class="divider">or sign up with</div>
+                    
+                    <div class="social-icons">
+                        <button class="google"><img src="Google.svg"></button>
+                        <button class="github"><img src="GitHub.svg"></button>
+                        <button class="facebook"><img src="Facebook.svg"></button>
+                    </div>
+                </form>
+            </div>
+            <div class="right-section">
+                <img src="brownrice.svg">
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

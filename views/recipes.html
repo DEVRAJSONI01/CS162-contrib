@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes-Wheate</title>
+    <link rel="stylesheet" href="style_recipes.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const navList = document.getElementById('nav-list');
+            
+            menuIcon.addEventListener('click', function() {
+                navList.style.display = navList.style.display === 'flex' ? 'none' : 'flex';
+            });
+        });
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+        body{
+            width: 100%;
+            min-height: 100vh;
+            background:#fff0d1;
+            background-image: url(Wallpaper1.svg);
+        }
+        header {
+            background: #000000;
+            color: #fff;
+            height: 60px;
+            width: 100%;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0;
+        }
+
+        nav li {
+            margin-left: 1rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .brand-name{
+            color: #FFF0D1;
+            font-family: "Mifelin", serif;
+            letter-spacing: 2.5px;
+            font-size: 28px;
+        }
+        .hero{
+            width:100%;
+            height: auto;
+            background: url(bgrecipes.svg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: #361F13;
+            text-align: center;
+            padding: 140px 0;
+            margin-bottom: 20px;
+        }
+        .hero h2{
+            font-size:40px ;
+            margin-bottom: 10px;
+            text-shadow: 2px 0 black;
+            font-family: "Mifelin", serif;
+            letter-spacing: 2.5px;
+        }
+        .hero p{
+            font-size:18px ;
+            margin-bottom: 10px;
+        }
+        .search-box{
+            max-width: 550px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .search-box input{
+            width: 70%;
+            padding: 5px;
+            outline: none;
+            border: 0;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+            border: 1px solid rgb(245, 37, 9);
+        }
+        .search-box button{
+            padding: 5px 10px;
+            outline: none;
+            border: 0;
+            border-radius: 0 5px 5px 0;
+            font-size: 1rem;
+            background: rgb(245, 37, 9);
+            color:white;
+            cursor: pointer;
+        }
+        .recipes{
+            padding: 50px 0;
+        }
+        .recipes h1{
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        .recipe-section{
+            width:90%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit , minmax(250px ,1fr));
+            column-gap: 10px;
+        }
+        .recipe-card{
+            background: #f9f0dc;
+            margin: 30px 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .recipe-card img{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .recipe-card h2{
+            font-size: 22px;
+            padding: 20px;
+        }
+        .recipe-card p{
+            font-size: 18px;
+            padding: 20px;
+        }
+        .recipe-card a{
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            background: #333;
+            color:#fff;
+            padding: 15px 0;
+            cursor: pointer;
+        }
+        footer{
+            background: #333;
+            padding: 20px 0;
+            color: #fff;
+            text-align: center;
+        }
+        .menu-icon{
+            font-size: 24px;
+            padding: 20px;
+            text-align: right;
+            cursor: pointer;
+            display: none;
+            color: white;
+        }
+        @media only screen and (max-width: 768px){
+            .menu-icon{
+                display: block;
+            }
+            #nav-list {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: #000000;
+                padding: 20px;
+            }
+            #nav-list li {
+                margin: 10px 0;
+            }
+            .hero h2{
+                font-size: 28px;
+            }
+            .hero p{
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="brand-div"><h1 class="brand-name"><img src="logo1.svg" alt="logo" width="35px" height="25px"> Wheaté</h1></div>
+                <div class="menu-icon">&#9776</div>
+                <ul id="nav-list">
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="/recipes">Recipes</a></li>
+                    <li><a href="/cart">Cart</a></li>
+                    <li><a href="/profile">Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-section">
+            <h2>Welcome to our Recipe Collection!</h2>
+            <p>Search mouth watering recipes to satisfy your cravings.</p>
+            <form action="#" class="search-box">
+                <input type="text" placeholder="Search Recipe">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="recipes">
+        <h1>Featured Recipes</h1>
+        <div class="recipe-section">
+            <div class="recipe-card">
+                <img src="pizzarecipe.svg">
+                <h2>Whole Wheat Pizza Delight</h2>
+                <p>Why Wheaté?<br> Our whole wheat base is packed with fiber and nutrients, unlike maida crusts, keeping you full and energized.</p>
+                <a href="/recipe2">View Recipe</a>
+            </div>
+            <div class="recipe-card">
+                <img src="noodlerecipe.svg">
+                <h2>Delecious Wheaté Noodle Stir-Fry</h2>
+                <p>Why Wheaté?<br> These noodles digest better than maida-based options and keep the meal light yet satisfying.</p>
+                <a href="/recipe2">View Recipe</a>
+            </div>
+            <div class="recipe-card">
+                <img src="momorecipe.svg">
+                <h2>Whole Wheat Momo Magic</h2>
+                <p>Why Wheaté?<br> Our whole wheat dough adds a nutty flavor and extra nutrition to this delicious street-food favorite.</p>
+                <a href="/recipe3">View Recipe</a>
+            </div>
+            <div class="recipe-card">
+                <img src="image4.png" alt="" >
+                <h2>Wheaté Breakfast Flatbread</h2>
+                <p>Why Wheaté?<br> Packed with fiber, this flatbread fuels your morning without the heaviness of maida, boosts energy naturally.</p>
+                <a href="/recipe4">View Recipe</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <p>&copy; 2025 Delicious Recipes</p>
+        </div>
+    </footer>
+</body>
+</html> 

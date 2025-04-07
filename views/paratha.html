@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheaté - Parathas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background: #fff0d1;
+        }
+
+        header {
+            background: #000000;
+            color: #fff;
+            height: 60px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+        }
+
+        .brand-name {
+            color: #FFF0D1;
+            font-family: "Open Sans", sans-serif;
+            letter-spacing: 2.5px;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 100px auto 40px;
+            padding: 0 20px;
+        }
+
+        .menu-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: #f9f0dc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 20px;
+        }
+
+        .menu-item h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .menu-item span {
+            display: block;
+            color: #4CAF50;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .cart-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .cart-btn {
+            padding: 8px 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cart-btn:hover {
+            background-color: #45a049;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            display: none;
+        }
+
+        .quantity-controls button {
+            padding: 6px 10px;
+            background-color: #361F13;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .quantity {
+            font-weight: bold;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="brand-div">
+                <h1 class="brand-name"><img src="logo.svg" alt="logo" width="35px" height="35px"> Wheaté</h1>
+            </div>
+            <ul>
+                <li><a href="/main">Home</a></li>
+                <li><a href="/pizza">Menu</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <a href="/pizza" class="back-button">← Back to Menu</a>
+
+    <div class="menu-container">
+        <h1 class="menu-title">Our Parathas</h1>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="paratha1.svg" alt="Aloo Paratha">
+                <div class="menu-item-content">
+                    <h3>Aloo Paratha</h3>
+                    <p>Classic stuffed paratha with spiced potato filling.</p>
+                    <span>₹80</span>
+                    <div class="cart-controls">
+                        <button class="cart-btn">Add to Cart</button>
+                        <div class="quantity-controls">
+                            <button class="decrease">-</button>
+                            <span class="quantity">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="paratha2.svg" alt="Paneer Paratha">
+                <div class="menu-item-content">
+                    <h3>Paneer Paratha</h3>
+                    <p>Stuffed with fresh cottage cheese and spices.</p>
+                    <span>₹100</span>
+                    <div class="cart-controls">
+                        <button class="cart-btn">Add to Cart</button>
+                        <div class="quantity-controls">
+                            <button class="decrease">-</button>
+                            <span class="quantity">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="paratha3.svg" alt="Gobi Paratha">
+                <div class="menu-item-content">
+                    <h3>Gobi Paratha</h3>
+                    <p>Stuffed with spiced cauliflower filling.</p>
+                    <span>₹90</span>
+                    <div class="cart-controls">
+                        <button class="cart-btn">Add to Cart</button>
+                        <div class="quantity-controls">
+                            <button class="decrease">-</button>
+                            <span class="quantity">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="paratha4.svg" alt="Methi Paratha">
+                <div class="menu-item-content">
+                    <h3>Methi Paratha</h3>
+                    <p>Made with fresh fenugreek leaves and spices.</p>
+                    <span>₹85</span>
+                    <div class="cart-controls">
+                        <button class="cart-btn">Add to Cart</button>
+                        <div class="quantity-controls">
+                            <button class="decrease">-</button>
+                            <span class="quantity">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="paratha5.svg" alt="Mooli Paratha">
+                <div class="menu-item-content">
+                    <h3>Mooli Paratha</h3>
+                    <p>Stuffed with grated radish and spices.</p>
+                    <span>₹85</span>
+                    <div class="cart-controls">
+                        <button class="cart-btn">Add to Cart</button>
+                        <div class="quantity-controls">
+                            <button class="decrease">-</button>
+                            <span class="quantity">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="paratha6.svg" alt="Mix Veg Paratha">
+                <div class="menu-item-content">
+                    <h3>Mix Veg Paratha</h3>
+                    <p>Loaded with mixed vegetables and spices.</p>
+                    <span>₹95</span>
+                    <div class="cart-controls">
+                        <button class="cart-btn">Add to Cart</button>
+                        <div class="quantity-controls">
+                            <button class="decrease">-</button>
+                            <span class="quantity">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="paratha7.svg" alt="Onion Paratha">
+                <div class="menu-item-content">
+                    <h3>Onion Paratha</h3>
+                    <p>Stuffed with caramelized onions and spices.</p>
+                    <span>₹80</span>
+                    <div class="cart-controls">
+                        <button class="cart-btn">Add to Cart</button>
+                        <div class="quantity-controls">
+                            <button class="decrease">-</button>
+                            <span class="quantity">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="paratha8.svg" alt="Lachha Paratha">
+                <div class="menu-item-content">
+                    <h3>Lachha Paratha</h3>
+                    <p>Layered paratha with ghee and spices.</p>
+                    <span>₹70</span>
+                    <div class="cart-controls">
+                        <button class="cart-btn">Add to Cart</button>
+                        <div class="quantity-controls">
+                            <button class="decrease">-</button>
+                            <span class="quantity">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all menu items
+            const menuItems = document.querySelectorAll('.menu-item');
+            
+            // Add click event listeners to all cart buttons
+            menuItems.forEach(item => {
+                const cartBtn = item.querySelector('.cart-btn');
+                const quantityControls = item.querySelector('.quantity-controls');
+                const quantityDisplay = item.querySelector('.quantity');
+                const addBtn = item.querySelector('.quantity-controls button:last-child');
+                const subtractBtn = item.querySelector('.quantity-controls button:first-child');
+                
+                let quantity = 0;
+                
+                cartBtn.addEventListener('click', function() {
+                    if (quantity === 0) {
+                        quantity = 1;
+                        cartBtn.style.display = 'none';
+                        quantityControls.style.display = 'flex';
+                        quantityDisplay.textContent = quantity;
+                    }
+                });
+                
+                addBtn.addEventListener('click', function() {
+                    quantity++;
+                    quantityDisplay.textContent = quantity;
+                });
+                
+                subtractBtn.addEventListener('click', function() {
+                    if (quantity > 1) {
+                        quantity--;
+                        quantityDisplay.textContent = quantity;
+                    } else {
+                        quantity = 0;
+                        cartBtn.style.display = 'block';
+                        quantityControls.style.display = 'none';
+                    }
+                });
+                
+                // Add to cart functionality
+                const addToCartBtn = item.querySelector('.cart-btn');
+                addToCartBtn.addEventListener('click', function() {
+                    const itemName = item.querySelector('h3').textContent;
+                    const itemPrice = parseFloat(item.querySelector('span').textContent.replace('₹', ''));
+                    const itemImage = item.querySelector('img').src;
+                    
+                    // Get existing cart from localStorage
+                    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    
+                    // Check if item already exists in cart
+                    const existingItem = cart.find(cartItem => cartItem.name === itemName);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        // Add new item to cart
+                        cart.push({
+                            name: itemName,
+                            price: itemPrice,
+                            image: itemImage,
+                            quantity: 1
+                        });
+                    }
+                    
+                    // Save cart back to localStorage
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    
+                    // Show success message
+                    alert('Item added to cart!');
+                });
+            });
+            
+            // Check if user is logged in
+            async function checkLoginStatus() {
+                try {
+                    const response = await fetch('/api/check-session');
+                    const data = await response.json();
+                    
+                    if (!data.isLoggedIn) {
+                        window.location.href = '/login';
+                    }
+                } catch (error) {
+                    console.error('Error checking login status:', error);
+                    window.location.href = '/login';
+                }
+            }
+            
+            // Initialize
+            checkLoginStatus();
+        });
+    </script>
+</body>
+
+</html>
