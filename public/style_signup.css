@@ -1,0 +1,134 @@
+body {
+
+    font-family: 'Open Sans', sans-serif;
+    background-color: #FFF0D1;
+    background-image: url(background.svg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 97vh;
+}
+
+.container {
+    display: flex;
+    background-color: #361F13;
+
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    height: 550px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.signup-card {
+    background-color: #FFF0D1;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px;
+    border-radius: 15px;
+    width: 90%;
+    height: 90%;
+}
+.left-section{
+    padding: 10px 10px 10px 20px;
+    width: 50%;
+}
+.title {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 10px;
+    font-family: "Mifelin", serif;
+    letter-spacing: 2.5px;
+    color: #361F13;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-fields {
+    display: flex;
+    gap: 10px;
+    
+}
+.firstname{
+display: flex;
+flex-direction: column;
+width: 50%;
+}
+.lastname{
+display: flex;
+flex-direction: column;
+width: 50%;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #361F13;
+}
+
+
+input {
+    padding: 10px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    background-color: #361F13;
+    color: white;
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.678);
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #E03600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #b5522c;
+}
+
+.divider {
+    text-align: center;
+    font-size: 14px;
+    margin: 10px 0px 5px 0px;
+    color: #8b6f47;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-icons button {
+    border: none;
+background-color: #361F13;
+color: white;
+padding: 8px 35px 5px 35px;
+border-radius: 30px;
+cursor: pointer;
+font-size: 14px;
+}
+
+.social-icons button:hover {
+    background-color: #8b6f47;
+}

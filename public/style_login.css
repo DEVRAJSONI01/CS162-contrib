@@ -1,0 +1,175 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #FFF0D1;
+    background-size: cover;
+    background-image: url(background.svg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    display: flex;
+    width: 65%;
+    background-color: #361F13;
+    padding: 40px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border: 3px solid black;
+}
+
+
+
+.mascot-image {
+    margin:  70px 70px 70px 30px;
+    
+
+    padding: 0px;
+    width: 300px;
+    height: 250px;
+}
+.brand-div{
+    width: 400px;
+    padding-bottom: 20px;
+    margin-top: 10px;
+}
+
+.brand-name {
+    color: #f9f0dc;
+    font-size: 26px;
+    font-family: "Mifelin", serif;
+    letter-spacing: 2.5px;
+    
+}
+
+.right-section {
+    background-color: #FFF0D1;
+    width: 48%;
+    padding: 40px;
+    border-radius: 20px;
+    border: 3px solid black;
+}
+h1{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: -15px;
+    
+}
+h2 {
+    text-align: center;
+    font-family: "Mifelin", serif;
+    letter-spacing: 2.5px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #361F13;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color:#361F13 ;
+    color: white;
+}
+input::placeholder{
+    color: rgba(255, 255, 255, 0.678);
+}
+#password{
+    margin-bottom: 3px;
+}
+
+.forgot-password {
+    font-size: 12px;
+    color: #361F13;
+    text-align: right;
+    margin-bottom: 15px;
+    margin-top: 0px;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.login-button {
+    background-color: #E03600;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.login-button:hover {
+    background-color: #b9451a;
+}
+
+.or-text {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.58);
+}
+
+.social-login {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-login button {
+    border: none;
+    background-color: #361F13;
+    color: white;
+    padding: 8px 35px 5px 35px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.social-login button:hover {
+    background-color: rgba(68, 52, 43, 0.642)
+}
+
+/* Register Link */
+.register-text {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.register-text a {
+    color: #b9451a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
